@@ -1,0 +1,43 @@
+# .my_profile
+# Named as such so it won't be accidentally included by oh-my-zsh "helpers"
+
+source $HOME/.gr_profile
+
+for file in $(\ls -1 ${HOME}/.includes/*.sh); do
+  source $file;
+done
+
+# Required to get vim colors to work in tmux
+export TERM="xterm-256color"
+
+export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin"
+
+# Add mysql to path
+export PATH="/usr/local/Cellar/mysql55/5.5.40/bin:$PATH"
+
+alias gl='git log --decorate'
+alias gs='git status'
+alias gg='git grep'
+
+alias xg='xargs grep'
+
+alias ffg='find . -type f | xargs grep'
+
+function rtags() {
+  if [ ! -d .git ] ; then
+    echo "Need to be in root of git dir"
+    exit
+  fi
+
+  ctags -R --tag-relative --languages=ruby -f .git/tags .
+}
+
+function gls() {
+  DIR=$1
+  if [[ "$DIR" = "" ]]; then DIR='.'; fi
+  for f in $(git ls-tree -d HEAD $DIR| awk '{print $4}'); do
+    LS=$(ls -lhd $f | awk '{print $9,$6,$7,$8}')
+    AUTHOR=$(git --no-pager log -1 --pretty=format:"%h %aN (%aE)" HEAD $f)
+    printf "%40s ->  %s\n" "$LS" "$AUTHOR"
+  done
+}

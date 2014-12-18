@@ -1,0 +1,22 @@
+[user]
+	name = Andrew Purcell
+	email = andrew.purcell@grandroundshealth.com
+[alias]
+	co = checkout
+	ci = commit
+  di = diff
+  dc = diff --cached
+  ff = merge --ff-only
+  fa = fetch --all
+  pom = push origin master
+  b = branch
+  ds = diff --stat=160,120
+  dh1 = diff HEAD~1
+  rom = reset --hard origin/master
+  mom = merge origin/master
+[init]
+  templatedir = /Users/apurcell/code/engineering/git/templates
+[push]
+	default = current
+[merge]
+	defaultToUpstream = true
