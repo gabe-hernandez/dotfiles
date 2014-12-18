@@ -12,9 +12,6 @@ export TERM="xterm-256color"
 
 export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin"
 
-# Add mysql to path
-export PATH="/usr/local/Cellar/mysql55/5.5.40/bin:$PATH"
-
 alias gl='git log --decorate'
 alias gs='git status'
 alias gg='git grep'
