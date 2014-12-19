@@ -3,16 +3,13 @@
 
 source $HOME/.gr_profile
 
-for file in $(\ls -1 ${HOME}/.includes/*.sh); do
-  source $file;
-done
-
 # Required to get vim colors to work in tmux
 export TERM="xterm-256color"
 
-export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/bin"
 
 alias gl='git log --decorate'
+alias glme='git log --decorate --author=purcell'
 alias gs='git status'
 alias gg='git grep'
 
