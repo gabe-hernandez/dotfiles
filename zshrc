@@ -47,6 +47,10 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git aws tmux)
 
+# Don't abort commands if globbing fails.
+# This enables the ^ operator in stuff like: git log HEAD^
+setopt NO_NOMATCH
+
 source $ZSH/oh-my-zsh.sh
 source $HOME/.my_profile
 
