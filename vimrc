@@ -49,7 +49,6 @@ nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Leader>qq :bdelete!<CR>
 
-nmap <Leader>p :CtrlP
 nmap <Leader>r !./%
 
 let g:airline#extensions#tabline#enabled = 1
@@ -80,3 +79,18 @@ nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
 nmap <silent> <A-Left> :wincmd h<CR>
 nmap <silent> <A-Right> :wincmd l<CR>
+
+" Highlight whitespace at the end of a line
+highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+match ExtraWhitespace /\s\+\%#\@<!$/
+
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
+function! RubyMethodFold(line)
+  let line_is_method_or_end = synIDattr(synID(a:line,1,0), 'name') == 'rubyMethodBlock'
+  let line_is_def = getline(a:line) =~ '\s*def '
+  return line_is_method_or_end || line_is_def
+endfunction
+
+set foldexpr=RubyMethodFold(v:lnum)

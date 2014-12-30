@@ -20,3 +20,5 @@
 	default = current
 [merge]
 	defaultToUpstream = true
+[rerere]
+	enabled = true

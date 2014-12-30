@@ -1,7 +1,7 @@
 # .my_profile
 # Named as such so it won't be accidentally included by oh-my-zsh "helpers"
 
-[ -e .gr_profile ] && source $HOME/.gr_profile
+[ -r $HOME/.gr_profile ] && source $HOME/.gr_profile
 
 # Required to get vim colors to work in tmux
 export TERM="xterm-256color"
@@ -17,7 +17,24 @@ alias xg='xargs grep'
 
 alias ffg='find . -type f | xargs grep'
 
-function rtags() {
+github() {
+  USER="$1"
+  REPO="$2"
+  DIR="$3"
+
+  if (($# < 2)); then
+    echo "Usage: github USER REPO [dirname]"
+    return
+  fi
+
+  git clone git@github.com:${USER}/${REPO}.git $DIR
+}
+
+grnds() {
+  github 'ConsultingMD' "$@"
+}
+
+rtags() {
   if [ ! -d .git ] ; then
     echo "Need to be in root of git dir"
     exit
@@ -26,7 +43,7 @@ function rtags() {
   ctags -R --tag-relative --languages=ruby -f .git/tags .
 }
 
-function gls() {
+gls() {
   DIR=$1
   if [[ "$DIR" = "" ]]; then DIR='.'; fi
   for f in $(git ls-tree -d HEAD $DIR| awk '{print $4}'); do
