@@ -1,1 +1,41 @@
-/Users/apurcell/bin/git-extract
+#!/bin/sh
+
+__git_extract_help() {
+  cat <<EOM
+Usage: git extract <new-branch-name>
+
+Creates a new branch, resets the current branch to before any unpushed changes,
+and then checks out the new branch.
+
+Use this if you accidentally commit to master, but need your changes on a
+feature branch.
+EOM
+}
+
+_git_extract() {
+  if [ -z "$1" ]; then
+    echo "You must specify a new branch name." 1>&2
+    __git_extract_help
+    exit
+  fi
+
+  if [ "-h" = "$1" ] || [ "--help" = "$1" ]; then
+    __git_extract_help
+    exit
+  fi
+
+  new_branch="$1"
+  old_branch=$(git rev-parse --abbrev-ref HEAD)
+
+  oldest_unpushed=$(git cherry | grep -E "^\+" | cut -f2 -d' ' | head -1)
+
+  if [ -z "$oldest_unpushed" ]; then
+    echo "Current branch is up to date. Nothing to do."
+    exit
+  fi
+
+  git checkout -b $new_branch
+  git update-ref $old_branch "$oldest_unpushed~1"
+}
+
+_git_extract $@
