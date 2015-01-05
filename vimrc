@@ -63,9 +63,6 @@ let g:buffergator_viewport_split_policy = 'R'
 " I want my own keymappings...
 let g:buffergator_suppress_keymaps = 1
 
-" Looper buffers
-"let g:buffergator_mru_cycle_loop = 1
-
 " Go to the previous buffer open
 nmap <leader>jj :BuffergatorMruCyclePrev<cr>
 
@@ -75,17 +72,17 @@ nmap <leader>kk :BuffergatorMruCycleNext<cr>
 " View the entire list of buffers open
 nmap <leader>b :BuffergatorOpen<cr>
 
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
 " Highlight whitespace at the end of a line
-highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
-match ExtraWhitespace /\s\+\%#\@<!$/
+match ErrorMsg /\s\+$/
 
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ErrorMsg /\s\+\%#\@<!$/
+au InsertLeave * match ErrorMsg /\s\+$/
+
+" Removes trailing spaces
+function! TrimWhiteSpace()
+      %s/\s\+$//e
+endfunction
+nmap <Leader>ww :call TrimWhiteSpace()<cr>
 
 function! RubyMethodFold(line)
   let line_is_method_or_end = synIDattr(synID(a:line,1,0), 'name') == 'rubyMethodBlock'
