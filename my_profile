@@ -17,6 +17,12 @@ alias xg='xargs grep'
 
 alias ffg='find . -type f | xargs grep'
 
+ff() {
+  dir="$1"
+  [[ -z $dir ]] && dir="."
+  find $dir -type f
+}
+
 github() {
   USER="$1"
   REPO="$2"
