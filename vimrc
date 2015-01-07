@@ -48,8 +48,11 @@ nnoremap <Leader>p :bprevious<CR>
 nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Leader>qq :bdelete!<CR>
+nmap <Leader>d :b#<bar>bd#<CR>
 
 nmap <Leader>r !./%
+
+nmap <C-f> :CtrlPBuffer<cr>
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -73,7 +76,7 @@ nmap <leader>kk :BuffergatorMruCycleNext<cr>
 nmap <leader>b :BuffergatorOpen<cr>
 
 " Highlight whitespace at the end of a line
-match ErrorMsg /\s\+$/
+match ErrorMsg /\s\+\%#\@<!$/
 
 au InsertEnter * match ErrorMsg /\s\+\%#\@<!$/
 au InsertLeave * match ErrorMsg /\s\+$/
