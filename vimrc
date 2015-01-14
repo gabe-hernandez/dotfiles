@@ -81,6 +81,8 @@ match ErrorMsg /\s\+\%#\@<!$/
 au InsertEnter * match ErrorMsg /\s\+\%#\@<!$/
 au InsertLeave * match ErrorMsg /\s\+$/
 
+nmap == V=
+
 " Removes trailing spaces
 function! TrimWhiteSpace()
       %s/\s\+$//e
