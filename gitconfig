@@ -1,9 +1,9 @@
 [user]
-	name = Andrew Purcell
-	email = andrew.purcell@grandroundshealth.com
+  name = Andrew Purcell
+  email = andrew.purcell@grandroundshealth.com
 [alias]
-	co = checkout
-	ci = commit
+  co = checkout
+  ci = commit
   di = diff
   dc = diff --cached
   ff = merge --ff-only
@@ -16,12 +16,11 @@
   mom = merge origin/master
 
   upstream-reset = !git reset $(git rev-parse --abbrev-ref HEAD@{upstream})
-
 [init]
   templatedir = /Users/apurcell/code/engineering/git/templates
 [push]
-	default = current
+  default = current
 [merge]
-	defaultToUpstream = true
+  defaultToUpstream = true
 [rerere]
-	enabled = true
+  enabled = true
