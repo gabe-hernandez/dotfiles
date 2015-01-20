@@ -2,6 +2,7 @@
 # Named as such so it won't be accidentally included by oh-my-zsh "helpers"
 
 [ -r $HOME/.gr_profile ] && source $HOME/.gr_profile
+[ -r $HOME/.home_profile ] && source $HOME/.home_profile
 
 # Required to get vim colors to work in tmux
 export TERM="xterm-256color"
