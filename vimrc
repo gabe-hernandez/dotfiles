@@ -11,6 +11,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'bling/vim-airline'
+Plugin 'kshenoy/vim-signature'
 call vundle#end()
 
 syntax on
