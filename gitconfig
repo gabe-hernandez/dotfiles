@@ -24,3 +24,6 @@
   defaultToUpstream = true
 [rerere]
   enabled = true
+[core]
+  editor = /usr/bin/vim
+  pager = less -F -X
