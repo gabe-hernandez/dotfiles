@@ -9,6 +9,8 @@ export TERM="xterm-256color"
 
 export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/bin:$HOME/dotfiles/bin"
 
+alias g='git'
+alias gn='git --no-pager'
 alias gl='git log --decorate'
 alias glme='git log --decorate --author=purcell'
 alias gs='git status'
