@@ -15,7 +15,7 @@
   rom = reset --hard origin/master
   mom = merge origin/master
 
-  upstream-reset = !git reset $(git rev-parse --abbrev-ref HEAD@{upstream})
+  upstream-reset = reset HEAD@{upstream}
 [init]
   templatedir = /Users/apurcell/code/engineering/git/templates
 [push]
