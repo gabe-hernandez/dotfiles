@@ -8,6 +8,7 @@
   dc = diff --cached
   ff = merge --ff-only
   fa = fetch --all
+  g = grep
   pom = push origin master
   b = branch
   ds = diff --stat=160,120

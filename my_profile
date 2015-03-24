@@ -26,7 +26,7 @@ alias filter-rspec='grep --color=always -vE "/gems/(zeus|rspec)"'
 ff() {
   dir="$1"
   [[ -z $dir ]] && dir="."
-  find $dir -type f
+  find $dir -type f | grep -v .git
 }
 
 github() {
