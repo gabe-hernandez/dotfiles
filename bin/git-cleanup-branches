@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for branch in $(git show-ref --heads | cut -f2 -d' ' | sed 's#refs/heads/##g'); do
+  read -p "Delete branch $branch? (y)es / (N)o / (q)uit " delete
+  if [[ $delete =~ [yY] ]]; then
+    git branch -D $branch
+  elif [[ $delete =~ [q] ]]; then
+    echo "Aborting cleanup."
+    exit 0
+  fi
+done
+
+echo "All done!"
