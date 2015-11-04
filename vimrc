@@ -12,6 +12,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'bling/vim-airline'
 Plugin 'kshenoy/vim-signature'
+Plugin 'jamessan/vim-gnupg'
 call vundle#end()
 
 syntax on
@@ -106,6 +107,11 @@ function! RubyMethodFold(line)
 endfunction
 
 set foldexpr=RubyMethodFold(v:lnum)
+
+let g:ctrlp_max_depth=40
+let g:ctrlp_max_files=0
+
+let g:ctrlp_custom_ignore = 'spec/fixtures/vcr_cassettes'
 
 " Indentation related
 nmap == V=

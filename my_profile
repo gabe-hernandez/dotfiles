@@ -7,7 +7,7 @@
 # Required to get vim colors to work in tmux
 export TERM="xterm-256color"
 
-export PATH="/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/bin:$HOME/dotfiles/bin"
+export PATH="$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin"
 export EDITOR=/usr/bin/vim
 
 alias g='git'
@@ -22,6 +22,10 @@ alias xg='xargs grep'
 alias ffg='find . -type f -print0 | xargs -0 grep'
 
 alias filter-rspec='grep --color=always -vE "/gems/(zeus|rspec)"'
+
+form-array() {
+  ruby -ne 'arr=[]; arr << $_.chop while gets; puts arr.inspect'
+}
 
 ff() {
   dir="$1"

@@ -1,9 +1,10 @@
 [user]
   name = Andrew Purcell
-  email = andrew.purcell@grandroundshealth.com
+  email = andrew.purcell@grandrounds.com
 [alias]
   co = checkout
   ci = commit
+  cp = cherry-pick
   di = diff
   dc = diff --cached
   ff = merge --ff-only
