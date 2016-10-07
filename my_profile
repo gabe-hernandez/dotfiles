@@ -4,10 +4,19 @@
 [ -r $HOME/.gr_profile ] && source $HOME/.gr_profile
 [ -r $HOME/.home_profile ] && source $HOME/.home_profile
 
+#export SCALA_HOME=/usr/local/bin/scala
+#export PATH=$PATH:$SCALA_HOME/bin
+#alias hstart="/usr/local/Cellar/hadoop/2.7.0/sbin/start-dfs.sh;/usr/local/Cellar/hadoop/2.7.0/sbin/start-yarn.sh"
+#alias hstop="/usr/local/Cellar/hadoop/2.7.0/sbin/stop-yarn.sh;/usr/local/Cellar/hadoop/2.7.0/sbin/stop-dfs.sh"
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/personal-code
+source /usr/local/bin/virtualenvwrapper.sh
+
 # Required to get vim colors to work in tmux
 export TERM="xterm-256color"
 
-export PATH="$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin"
+export PATH="node_modules/.bin:$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin"
 export EDITOR=/usr/bin/vim
 
 alias g='git'
@@ -16,6 +25,7 @@ alias gl='git log --decorate'
 alias glme='git log --decorate --author=purcell'
 alias gs='git status'
 alias gg='git grep'
+alias remote_branches="git ls-remote origin | grep refs/heads | grep -v rc/branch | awk '{ gsub(/refs\/heads\//, \"\", \$2) ; print \$2}'"
 
 alias xg='xargs grep'
 
@@ -26,6 +36,9 @@ alias filter-rspec='grep --color=always -vE "/gems/(zeus|rspec)"'
 form-array() {
   ruby -ne 'arr=[]; arr << $_.chop while gets; puts arr.inspect'
 }
+
+alias bs='./bin/rspec'
+alias brails='./bin/rails'
 
 ff() {
   dir="$1"

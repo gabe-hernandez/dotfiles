@@ -62,6 +62,7 @@ nnoremap <Leader>n :bnext<CR>
 nnoremap <Leader>q :bdelete<CR>
 nnoremap <Leader>qq :bdelete!<CR>
 nmap <Leader>d :b#<bar>bd#<CR>
+nmap <Leader>w :w<CR>
 
 nmap <Leader>r !./%
 
@@ -111,7 +112,9 @@ set foldexpr=RubyMethodFold(v:lnum)
 let g:ctrlp_max_depth=40
 let g:ctrlp_max_files=0
 
-let g:ctrlp_custom_ignore = 'spec/fixtures/vcr_cassettes'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '(node_modules|spec\/fixtures\/vcr_cassettes|\/tmp\/cache)$',
+  \ }
 
 " Indentation related
 nmap == V=
