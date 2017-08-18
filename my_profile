@@ -1,23 +1,17 @@
 # .my_profile
 # Named as such so it won't be accidentally included by oh-my-zsh "helpers"
 
-[ -r $HOME/.gr_profile ] && source $HOME/.gr_profile
 [ -r $HOME/.home_profile ] && source $HOME/.home_profile
-
-#export SCALA_HOME=/usr/local/bin/scala
-#export PATH=$PATH:$SCALA_HOME/bin
-#alias hstart="/usr/local/Cellar/hadoop/2.7.0/sbin/start-dfs.sh;/usr/local/Cellar/hadoop/2.7.0/sbin/start-yarn.sh"
-#alias hstop="/usr/local/Cellar/hadoop/2.7.0/sbin/stop-yarn.sh;/usr/local/Cellar/hadoop/2.7.0/sbin/stop-dfs.sh"
-
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/personal-code
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Required to get vim colors to work in tmux
 export TERM="xterm-256color"
-
-export PATH="node_modules/.bin:$HOME/bin:$HOME/dotfiles/bin:/usr/local/bin:$PATH:$HOME/.rvm/bin"
 export EDITOR=/usr/bin/vim
+
+if command -v most > /dev/null 2>&1; then
+  alias man='man -P most'
+fi
+
+export PATH=$HOME/dotfiles/bin:$PATH
 
 alias g='git'
 alias gn='git --no-pager'
@@ -25,20 +19,10 @@ alias gl='git log --decorate'
 alias glme='git log --decorate --author=purcell'
 alias gs='git status'
 alias gg='git grep'
-alias remote_branches="git ls-remote origin | grep refs/heads | grep -v rc/branch | awk '{ gsub(/refs\/heads\//, \"\", \$2) ; print \$2}'"
 
 alias xg='xargs grep'
 
 alias ffg='find . -type f -print0 | xargs -0 grep'
-
-alias filter-rspec='grep --color=always -vE "/gems/(zeus|rspec)"'
-
-form-array() {
-  ruby -ne 'arr=[]; arr << $_.chop while gets; puts arr.inspect'
-}
-
-alias bs='./bin/rspec'
-alias brails='./bin/rails'
 
 ff() {
   dir="$1"
@@ -59,19 +43,6 @@ github() {
   git clone git@github.com:${USER}/${REPO}.git $DIR
 }
 
-grnds() {
-  github 'ConsultingMD' "$@"
-}
-
-rtags() {
-  if [ ! -d .git ] ; then
-    echo "Need to be in root of git dir"
-    exit
-  fi
-
-  ctags -R --tag-relative --languages=ruby -f .git/tags .
-}
-
 gls() {
   DIR=$1
   if [[ "$DIR" = "" ]]; then DIR='.'; fi
@@ -81,3 +52,17 @@ gls() {
     printf "%40s ->  %s\n" "$LS" "$AUTHOR"
   done
 }
+
+export GIT_PS1_SHOWDIRTYSTATE=yes
+function color_my_prompt {
+  local __user_and_host="\[\033[01;32m\]\u@\h"
+  local __cur_location="\[\033[01;34m\]\w"
+  local __git_branch_color="\[\033[31m\]"
+  # local __git_branch='`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`'
+  local __git_branch='`__git_ps1` '
+  local __prompt_tail="\[\033[35m\]$"
+  local __last_color="\[\033[00m\]"
+  export PS1="$__user_and_host $__cur_location$__git_branch_color$__git_branch$__prompt_tail$__last_color "
+}
+
+color_my_prompt
