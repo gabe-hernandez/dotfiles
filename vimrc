@@ -3,9 +3,6 @@ filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-bundler'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kien/ctrlp.vim'
@@ -13,6 +10,11 @@ Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'bling/vim-airline'
 Plugin 'kshenoy/vim-signature'
 Plugin 'jamessan/vim-gnupg'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'othree/html5.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'wavded/vim-stylus'
 call vundle#end()
 
 syntax on
