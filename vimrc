@@ -2,10 +2,12 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.fzf
 call vundle#begin()
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-fugitive'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf.vim'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'bling/vim-airline'
 Plugin 'kshenoy/vim-signature'
@@ -15,6 +17,7 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'othree/html5.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'wavded/vim-stylus'
+Plugin 'Yggdroot/indentLine'
 call vundle#end()
 
 syntax on
@@ -41,6 +44,8 @@ set smarttab
 set shiftwidth=2 tabstop=2 softtabstop=2
 
 set backspace=indent,eol,start
+
+nmap <c-p> :FZF<CR>
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -75,6 +80,7 @@ let g:buffergator_suppress_keymaps = 1
 " View the entire list of buffers open
 nmap <leader>b :BuffergatorOpen<cr>
 
+nmap <leader>p :echo expand('%:p')<cr>
 " Highlight whitespace at the end of a line
 match ErrorMsg /\s\+\%#\@<!$/
 
@@ -92,7 +98,7 @@ let g:ctrlp_max_files=0
 
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '(node_modules|build)$',
-  \ }
+\}
 
 " Indentation related
 nmap == V=
@@ -101,3 +107,6 @@ nmap < V<
 
 " mixpanel-related commands
 command! RV :execute "vsplit " . expand('%:r:h') . "/index.jade"
+nmap gw :execute "Ggrep " . expand('<cword>')<cr>
+" open quickfix window after grepping
+autocmd QuickFixCmdPost *grep* cwindow

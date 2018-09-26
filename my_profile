@@ -11,7 +11,7 @@ if command -v most > /dev/null 2>&1; then
   alias man='man -P most'
 fi
 
-export PATH=$HOME/dotfiles/bin:$PATH
+export PATH=$HOME/.dotfiles/bin:./node_modules/.bin:$PATH
 
 alias g='git'
 alias gn='git --no-pager'
@@ -50,6 +50,13 @@ gls() {
     LS=$(ls -lhd $f | awk '{print $9,$6,$7,$8}')
     AUTHOR=$(git --no-pager log -1 --pretty=format:"%h %aN (%aE)" HEAD $f)
     printf "%40s ->  %s\n" "$LS" "$AUTHOR"
+  done
+}
+
+stopwatch() {
+  date1=`date +%s`;
+  while true; do
+    echo -ne "$(date -u --date @$((`date +%s` - $date1)) +%H:%M:%S)\r";
   done
 }
 
