@@ -73,3 +73,5 @@ function color_my_prompt {
 }
 
 color_my_prompt
+
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
