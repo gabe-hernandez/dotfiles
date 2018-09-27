@@ -11,7 +11,7 @@
   fa = fetch --all
   g = grep
   pom = push origin master
-  b = branch
+  b = branch --format='%(HEAD) %(if)%(HEAD)%(then)%(color:green)%(end)%(refname:lstrip=2) (%(authordate:relative))'
   ds = diff --stat=160,120
   dh1 = diff HEAD~1
   rom = reset --hard origin/master
