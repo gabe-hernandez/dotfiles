@@ -18,8 +18,6 @@
   mom = merge origin/master
 
   upstream-reset = reset HEAD@{upstream}
-[init]
-  templatedir = /Users/apurcell/code/engineering/git/templates
 [push]
   default = current
 [merge]
@@ -28,4 +26,4 @@
   enabled = true
 [core]
   editor = /usr/bin/vim
-  excludesfile = /Users/apurcell/.gitignore
+  excludesfile = ~/.gitignore
