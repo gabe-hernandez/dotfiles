@@ -105,6 +105,11 @@ nmap == V=
 nmap > V>
 nmap < V<
 
+command CompileDot !dot -Tpng -O %
+command OpenPng !open %.png
+
+nmap <leader>g :CompileDot<CR>:OpenPng<CR><CR>
+
 " mixpanel-related commands
 command! RV :execute "vsplit " . expand('%:r:h') . "/index.jade"
 nmap gw :execute "Ggrep " . expand('<cword>')<cr>
