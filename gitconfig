@@ -1,7 +1,8 @@
 [user]
   name = Andrew Purcell
-  email = andrew.purcell@grandrounds.com
+  email = andrew.purcell@mixpanel.com
 [alias]
+  l = log --decorate
   co = checkout
   ci = commit
   cp = cherry-pick
