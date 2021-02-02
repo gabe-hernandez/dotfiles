@@ -17,7 +17,14 @@
   dh1 = diff HEAD~1
   rom = reset --hard origin/master
   mom = merge origin/master
-
+  
+  # Sets file to ignored as to not commit
+  ignore = update-index --assume-unchanged
+  # Undoes ignore command
+  unignore = update-index --no-assume-unchanged
+  # List ignored files
+  ignored = !git ls-files -v | grep "^[[:lower:]]"
+  
   upstream-reset = reset HEAD@{upstream}
 [push]
   default = current
